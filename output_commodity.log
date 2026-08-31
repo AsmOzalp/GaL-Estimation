@@ -1,0 +1,309 @@
+/workspaces/GaL-Estimation/src/estimation.py:271: IntegrationWarning: The maximum number of subdivisions (2000) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+  integral_val, _ = integrate.quad(integrand, 1e-10, np.inf, limit=2000)
+/workspaces/GaL-Estimation/src/estimation.py:271: IntegrationWarning: The maximum number of subdivisions (2000) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+  integral_val, _ = integrate.quad(integrand, 1e-10, np.inf, limit=2000)
+>>> RUNNING COMMODITY RISK ANALYSIS (UPDATED WITH v9) <<<
+
+[GC=F] Downloading target dataset from Yahoo Finance starting from 2010-01-01 through today...
+ -> Holidays and zero-volume periods removed: 41 rows excluded.
+ -> [Reproducibility] Actual sample window used: 2010-01-05 .. 2026-08-31  (n=4147 observations) -- report this exact window in the manuscript's data section
+
+Running Robust GARCH(1,1) model for GOLD (Daily)...
+ [GARCH deneme 1: GARCH(1,1)-t] convergence_flag=0 (OK), std(resid/sigma)=0.9824
+
+ --- GARCH TANI [GARCH(1,1)-t] ---
+  Ham getirilerde gercek ARCH etkisi (Ljung-Box, ham^2, lag10) p=0.0000 -> ARCH ETKISI VAR
+  omega=0.0108108, sum(alpha)=0.0356, sum(beta)=0.9571, persistence(alpha+beta)=0.9927 *** ASIRI KALICI (>=0.98) ***
+  sigma_t vs 20-bar |return| kayan-std korelasyonu: 0.8538
+  sigma_t degisim araligi / realized-vol degisim araligi: 0.8592  (<<1 ise GARCH asiri-smooth ediyor olabilir)
+  Kare-standardize kalintilar Ljung-Box (lag10) p=0.0559 (PASS)
+  -> Genel tani: ASIRI-SMOOTH SUPHESI VAR
+ -> GARCH(1,1)-t yakinsadi ama ASIRI-SMOOTH suphesi var; alternatif volatilite modelleri deneniyor (Cozum 1B)...
+ [GARCH deneme 2: GARCH(1,1)-normal] convergence_flag=0 (OK), std(resid/sigma)=0.9824
+
+ --- GARCH TANI [GARCH(1,1)-normal] ---
+  Ham getirilerde gercek ARCH etkisi (Ljung-Box, ham^2, lag10) p=0.0000 -> ARCH ETKISI VAR
+  omega=0.0108108, sum(alpha)=0.0356, sum(beta)=0.9571, persistence(alpha+beta)=0.9927 *** ASIRI KALICI (>=0.98) ***
+  sigma_t vs 20-bar |return| kayan-std korelasyonu: 0.8538
+  sigma_t degisim araligi / realized-vol degisim araligi: 0.8592  (<<1 ise GARCH asiri-smooth ediyor olabilir)
+  Kare-standardize kalintilar Ljung-Box (lag10) p=0.0559 (PASS)
+  -> Genel tani: ASIRI-SMOOTH SUPHESI VAR
+ [Alternatif 1: EGARCH(1,1,1)] convergence_flag=0 (OK), std(resid/sigma)=0.9837
+
+ --- GARCH TANI [EGARCH(1,1,1)] ---
+  Ham getirilerde gercek ARCH etkisi (Ljung-Box, ham^2, lag10) p=0.0000 -> ARCH ETKISI VAR
+  omega=0.00992902, sum(alpha)=0.0994, sum(beta)=0.9898, persistence(alpha+beta)=1.0892 *** ASIRI KALICI (>=0.98) ***
+  sigma_t vs 20-bar |return| kayan-std korelasyonu: 0.7775
+  sigma_t degisim araligi / realized-vol degisim araligi: 0.7374  (<<1 ise GARCH asiri-smooth ediyor olabilir)
+  Kare-standardize kalintilar Ljung-Box (lag10) p=0.0129 *** FAIL: hala ARCH etkisi var ***
+  -> Genel tani: ASIRI-SMOOTH SUPHESI VAR
+ [Alternatif 2: GJR-GARCH(1,1)] convergence_flag=0 (OK), std(resid/sigma)=0.9833
+
+ --- GARCH TANI [GJR-GARCH(1,1)] ---
+  Ham getirilerde gercek ARCH etkisi (Ljung-Box, ham^2, lag10) p=0.0000 -> ARCH ETKISI VAR
+  omega=0.0104557, sum(alpha)=0.0532, sum(beta)=0.9555, persistence(alpha+beta)=1.0087 *** ASIRI KALICI (>=0.98) ***
+  sigma_t vs 20-bar |return| kayan-std korelasyonu: 0.8409
+  sigma_t degisim araligi / realized-vol degisim araligi: 0.8572  (<<1 ise GARCH asiri-smooth ediyor olabilir)
+  Kare-standardize kalintilar Ljung-Box (lag10) p=0.0419 *** FAIL: hala ARCH etkisi var ***
+  -> Genel tani: ASIRI-SMOOTH SUPHESI VAR
+ [Alternatif 3: GARCH(2,2)] convergence_flag=0 (OK), std(resid/sigma)=0.9863
+
+ --- GARCH TANI [GARCH(2,2)] ---
+  Ham getirilerde gercek ARCH etkisi (Ljung-Box, ham^2, lag10) p=0.0000 -> ARCH ETKISI VAR
+  omega=0.0237678, sum(alpha)=0.0707, sum(beta)=0.9126, persistence(alpha+beta)=0.9834 *** ASIRI KALICI (>=0.98) ***
+  sigma_t vs 20-bar |return| kayan-std korelasyonu: 0.8480
+  sigma_t degisim araligi / realized-vol degisim araligi: 1.1100  (<<1 ise GARCH asiri-smooth ediyor olabilir)
+  Kare-standardize kalintilar Ljung-Box (lag10) p=0.0169 *** FAIL: hala ARCH etkisi var ***
+  -> Genel tani: ASIRI-SMOOTH SUPHESI VAR
+ *** UYARI: Hicbir model 'asiri-smooth degil' kriterini tam saglamadi. Standart GARCH(1,1) sonucu kullaniliyor -- lutfen diagnose_garch_fit ciktisini dikkatle inceleyin ve sonuclari supheyle degerlendirin. ***
+ [FIX #11 kontrolü] arch iç-ölçek çarpanı (res.scale) = 1.0
+
+Estimating standard distributions on standardized residuals...
+
+Estimating AL parameters for raw residuals...
+ AL -> Alpha: 2.0000 (0.0375), Theta: -0.0000 (0.0401)
+
+=====================================================================================
+ DUYARLILIK ANALİZİ: GaL Parametreleri Farklı Hacim Eşiklerinde (GOLD)
+=====================================================================================
+ Eşik (Percentile)  | N (Kriz)   | Alpha (SE)       | Theta (SE)       | p (SE)          
+-------------------------------------------------------------------------------------
+ %85                | 622        | 1.5739 (0.0819) | -0.1052 (0.0894) | 0.6806 (0.0663)
+ %90                | 415        | 1.4201 (0.0937) | -0.1616 (0.1026) | 0.5540 (0.0686)
+ %95                | 208        | 1.1996 (0.1264) | -0.0611 (0.1333) | 0.3709 (0.0731)
+ %98                | 83         | 1.7951 (0.5779) | -0.3218 (0.2597) | 0.0350 (0.0369)
+=====================================================================================
+
+Constructing Volume-Triggered Cumulative Crashes for VaR (GOLD)...
+ -> [Normalize esik] Pencere=30 bar, 95. persentil (goreli hacim) = 3.3590
+
+Estimating GaL parameters for cumulative crashes...
+ GaL -> Alpha: 1.1996 (0.1264), Theta: -0.0611 (0.1333), p: 0.3709 (0.0731)
+ [Sinir kontrolu [GaL (Crash)]] |theta|/max_theta = 0.049
+
+=========================================================================================
+ TABLO 1: RUTİN VaR TESTİ (GOLD - 4147 Gözlem)
+=========================================================================================
+
+ LEVEL: 0.05 (Beklenen İhlal: 207.35 / 4147)
+-----------------------------------------------------------------------------------------
+ Normal          | İhlal: 191   | UC: 0.2380 PASS | CC: 0.4785 PASS
+ Student-t       | İhlal: 227   | UC: 0.1676 PASS | CC: 0.2161 PASS
+ Cauchy          | İhlal: 27    | UC: 0.0000 FAIL | CC: 0.0000 FAIL
+ Laplace         | İhlal: 188   | UC: 0.1616 PASS | CC: 0.3687 PASS
+ AL (Linnik)     | İhlal: 72    | UC: 0.0000 FAIL | CC: 0.0000 FAIL
+
+ LEVEL: 0.01 (Beklenen İhlal: 41.47 / 4147)
+-----------------------------------------------------------------------------------------
+ Normal          | İhlal: 72    | UC: 0.0000 FAIL | CC: 0.0000 FAIL
+ Student-t       | İhlal: 45    | UC: 0.5868 PASS | CC: 0.6987 PASS
+ Cauchy          | İhlal: 0     | UC: 1.0000 PASS | CC: 1.0000 PASS
+ Laplace         | İhlal: 35    | UC: 0.2995 PASS | CC: 0.3439 PASS
+ AL (Linnik)     | İhlal: 14    | UC: 0.0000 FAIL | CC: 0.0000 FAIL
+
+=========================================================================================
+ TABLO 2: KÜMÜLATİF ÇÖKÜŞ VaR TESTİ (GOLD - GaL Modeli - 208 Çöküş Anı)
+=========================================================================================
+
+ LEVEL: 0.05 (Beklenen İhlal: 10.40 / 208)
+-----------------------------------------------------------------------------------------
+ GaL (SBM Crash) | İhlal: 7     | UC: 0.2514 PASS | CC: 0.4054 PASS
+
+ LEVEL: 0.01 (Beklenen İhlal: 2.08 / 208)
+-----------------------------------------------------------------------------------------
+ GaL (SBM Crash) | İhlal: 0     | UC: 1.0000 PASS | CC: 1.0000 PASS
+
+=========================================================================================
+ Ljung-Box Test for Serial Independence (i.i.d. check of Crash Magnitudes) (GOLD)
+=========================================================================================
+ Ljung-Box Test (Lag 10) p-value: 0.7009
+ Sonuc: PASS. Seri bagimsizdir. (i.i.d. varsayimi ampirik olarak dogrulanmistir)
+
+=========================================================================================
+ OUT-OF-SAMPLE (OOS) BACKTESTING -- IKI SPLIT STRATEJISI KARSILASTIRMASI
+=========================================================================================
+
+ --- OOS [Kronolojik (orijinal, son %30)] --- (train n=2902, test n=1245)
+  [Train] Alpha=1.1894, Theta=-0.2083, p=0.3934  (n_crash_train=145)
+  [Test]  N_crash=71
+  OOS VaR 0.05 | Ihlal: 2/71 | UC: 0.3594 PASS | CC: 0.6195 PASS
+  OOS VaR 0.01 | Ihlal: 0/71 | UC: 1.0000 PASS | CC: 1.0000 PASS
+
+ [Stratified split] test bloklari (0-9 arasi): [np.int64(0), np.int64(4), np.int64(9)]
+/workspaces/GaL-Estimation/src/estimation.py:271: IntegrationWarning: The maximum number of subdivisions (2000) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+  integral_val, _ = integrate.quad(integrand, 1e-10, np.inf, limit=2000)
+/workspaces/GaL-Estimation/src/estimation.py:271: IntegrationWarning: The maximum number of subdivisions (2000) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+  integral_val, _ = integrate.quad(integrand, 1e-10, np.inf, limit=2000)
+
+ --- OOS [Stratified (10 blok, dagitilmis)] --- (train n=2903, test n=1244)
+  [Train] Alpha=1.0774, Theta=-0.1350, p=0.4157  (n_crash_train=145)
+  [Test]  N_crash=62
+  OOS VaR 0.05 | Ihlal: 0/62 | UC: 1.0000 PASS | CC: 1.0000 PASS
+  OOS VaR 0.01 | Ihlal: 0/62 | UC: 1.0000 PASS | CC: 1.0000 PASS
+
+[SI=F] Downloading target dataset from Yahoo Finance starting from 2010-01-01 through today...
+ -> Holidays and zero-volume periods removed: 239 rows excluded.
+ -> [Reproducibility] Actual sample window used: 2010-01-05 .. 2026-08-31  (n=3949 observations) -- report this exact window in the manuscript's data section
+
+Running Robust GARCH(1,1) model for SILVER (Daily)...
+ [GARCH deneme 1: GARCH(1,1)-t] convergence_flag=0 (OK), std(resid/sigma)=0.9683
+
+ --- GARCH TANI [GARCH(1,1)-t] ---
+  Ham getirilerde gercek ARCH etkisi (Ljung-Box, ham^2, lag10) p=0.0000 -> ARCH ETKISI VAR
+  omega=0.0337978, sum(alpha)=0.0435, sum(beta)=0.9530, persistence(alpha+beta)=0.9964 *** ASIRI KALICI (>=0.98) ***
+  sigma_t vs 20-bar |return| kayan-std korelasyonu: 0.8827
+  sigma_t degisim araligi / realized-vol degisim araligi: 1.0639  (<<1 ise GARCH asiri-smooth ediyor olabilir)
+  Kare-standardize kalintilar Ljung-Box (lag10) p=0.0009 *** FAIL: hala ARCH etkisi var ***
+  -> Genel tani: ASIRI-SMOOTH SUPHESI VAR
+ -> GARCH(1,1)-t yakinsadi ama ASIRI-SMOOTH suphesi var; alternatif volatilite modelleri deneniyor (Cozum 1B)...
+ [GARCH deneme 2: GARCH(1,1)-normal] convergence_flag=0 (OK), std(resid/sigma)=0.9683
+
+ --- GARCH TANI [GARCH(1,1)-normal] ---
+  Ham getirilerde gercek ARCH etkisi (Ljung-Box, ham^2, lag10) p=0.0000 -> ARCH ETKISI VAR
+  omega=0.0337978, sum(alpha)=0.0435, sum(beta)=0.9530, persistence(alpha+beta)=0.9964 *** ASIRI KALICI (>=0.98) ***
+  sigma_t vs 20-bar |return| kayan-std korelasyonu: 0.8827
+  sigma_t degisim araligi / realized-vol degisim araligi: 1.0639  (<<1 ise GARCH asiri-smooth ediyor olabilir)
+  Kare-standardize kalintilar Ljung-Box (lag10) p=0.0009 *** FAIL: hala ARCH etkisi var ***
+  -> Genel tani: ASIRI-SMOOTH SUPHESI VAR
+ [Alternatif 1: EGARCH(1,1,1)] convergence_flag=0 (OK), std(resid/sigma)=0.9718
+
+ --- GARCH TANI [EGARCH(1,1,1)] ---
+  Ham getirilerde gercek ARCH etkisi (Ljung-Box, ham^2, lag10) p=0.0000 -> ARCH ETKISI VAR
+  omega=0.0226465, sum(alpha)=0.1068, sum(beta)=0.9919, persistence(alpha+beta)=1.0987 *** ASIRI KALICI (>=0.98) ***
+  sigma_t vs 20-bar |return| kayan-std korelasyonu: 0.8196
+  sigma_t degisim araligi / realized-vol degisim araligi: 0.8198  (<<1 ise GARCH asiri-smooth ediyor olabilir)
+  Kare-standardize kalintilar Ljung-Box (lag10) p=0.0000 *** FAIL: hala ARCH etkisi var ***
+  -> Genel tani: ASIRI-SMOOTH SUPHESI VAR
+ [Alternatif 2: GJR-GARCH(1,1)] convergence_flag=0 (OK), std(resid/sigma)=0.9739
+
+ --- GARCH TANI [GJR-GARCH(1,1)] ---
+  Ham getirilerde gercek ARCH etkisi (Ljung-Box, ham^2, lag10) p=0.0000 -> ARCH ETKISI VAR
+  omega=0.0302299, sum(alpha)=0.0680, sum(beta)=0.9544, persistence(alpha+beta)=1.0223 *** ASIRI KALICI (>=0.98) ***
+  sigma_t vs 20-bar |return| kayan-std korelasyonu: 0.8516
+  sigma_t degisim araligi / realized-vol degisim araligi: 0.9012  (<<1 ise GARCH asiri-smooth ediyor olabilir)
+  Kare-standardize kalintilar Ljung-Box (lag10) p=0.0000 *** FAIL: hala ARCH etkisi var ***
+  -> Genel tani: ASIRI-SMOOTH SUPHESI VAR
+ [Alternatif 3: GARCH(2,2)] convergence_flag=0 (OK), std(resid/sigma)=0.9689
+
+ --- GARCH TANI [GARCH(2,2)] ---
+  Ham getirilerde gercek ARCH etkisi (Ljung-Box, ham^2, lag10) p=0.0000 -> ARCH ETKISI VAR
+  omega=0.0644687, sum(alpha)=0.0835, sum(beta)=0.9097, persistence(alpha+beta)=0.9932 *** ASIRI KALICI (>=0.98) ***
+  sigma_t vs 20-bar |return| kayan-std korelasyonu: 0.8760
+  sigma_t degisim araligi / realized-vol degisim araligi: 1.1225  (<<1 ise GARCH asiri-smooth ediyor olabilir)
+  Kare-standardize kalintilar Ljung-Box (lag10) p=0.0001 *** FAIL: hala ARCH etkisi var ***
+  -> Genel tani: ASIRI-SMOOTH SUPHESI VAR
+ *** UYARI: Hicbir model 'asiri-smooth degil' kriterini tam saglamadi. Standart GARCH(1,1) sonucu kullaniliyor -- lutfen diagnose_garch_fit ciktisini dikkatle inceleyin ve sonuclari supheyle degerlendirin. ***
+ [FIX #11 kontrolü] arch iç-ölçek çarpanı (res.scale) = 1.0
+
+Estimating standard distributions on standardized residuals...
+
+Estimating AL parameters for raw residuals...
+ AL -> Alpha: 2.0000 (0.0385), Theta: 0.0000 (0.0411)
+
+=====================================================================================
+ DUYARLILIK ANALİZİ: GaL Parametreleri Farklı Hacim Eşiklerinde (SILVER)
+=====================================================================================
+ Eşik (Percentile)  | N (Kriz)   | Alpha (SE)       | Theta (SE)       | p (SE)          
+-------------------------------------------------------------------------------------
+ %85                | 592        | 1.4640 (0.0797) | -0.0144 (0.0890) | 0.8134 (0.0779)
+ %90                | 395        | 1.2693 (0.0896) | -0.0374 (0.0999) | 0.6666 (0.0808)
+ %95                | 198        | 1.0023 (0.1175) | -0.2352 (0.1210) | 0.4925 (0.0895)
+ %98                | 79         | 1.8513 (0.6492) | -0.2336 (0.2746) | 0.0303 (0.0361)
+=====================================================================================
+
+Constructing Volume-Triggered Cumulative Crashes for VaR (SILVER)...
+ -> [Normalize esik] Pencere=30 bar, 95. persentil (goreli hacim) = 3.0350
+
+Estimating GaL parameters for cumulative crashes...
+ GaL -> Alpha: 1.0023 (0.1175), Theta: -0.2352 (0.1210), p: 0.4925 (0.0895)
+ [Sinir kontrolu [GaL (Crash)]] |theta|/max_theta = 0.150
+
+=========================================================================================
+ TABLO 1: RUTİN VaR TESTİ (SILVER - 3949 Gözlem)
+=========================================================================================
+
+ LEVEL: 0.05 (Beklenen İhlal: 197.45 / 3949)
+-----------------------------------------------------------------------------------------
+ Normal          | İhlal: 185   | UC: 0.3584 PASS | CC: 0.5890 PASS
+ Student-t       | İhlal: 217   | UC: 0.1597 PASS | CC: 0.3571 PASS
+ Cauchy          | İhlal: 39    | UC: 0.0000 FAIL | CC: 0.0000 FAIL
+ Laplace         | İhlal: 187   | UC: 0.4416 PASS | CC: 0.6877 PASS
+ AL (Linnik)     | İhlal: 74    | UC: 0.0000 FAIL | CC: 0.0000 FAIL
+
+ LEVEL: 0.01 (Beklenen İhlal: 39.49 / 3949)
+-----------------------------------------------------------------------------------------
+ Normal          | İhlal: 74    | UC: 0.0000 FAIL | CC: 0.0000 FAIL
+ Student-t       | İhlal: 48    | UC: 0.1880 PASS | CC: 0.0005 FAIL
+ Cauchy          | İhlal: 0     | UC: 1.0000 PASS | CC: 1.0000 PASS
+ Laplace         | İhlal: 47    | UC: 0.2436 PASS | CC: 0.0047 FAIL
+ AL (Linnik)     | İhlal: 10    | UC: 0.0000 FAIL | CC: 0.0000 FAIL
+
+=========================================================================================
+ TABLO 2: KÜMÜLATİF ÇÖKÜŞ VaR TESTİ (SILVER - GaL Modeli - 198 Çöküş Anı)
+=========================================================================================
+
+ LEVEL: 0.05 (Beklenen İhlal: 9.90 / 198)
+-----------------------------------------------------------------------------------------
+ GaL (SBM Crash) | İhlal: 3     | UC: 0.0087 FAIL | CC: 0.0305 FAIL
+
+ LEVEL: 0.01 (Beklenen İhlal: 1.98 / 198)
+-----------------------------------------------------------------------------------------
+ GaL (SBM Crash) | İhlal: 0     | UC: 1.0000 PASS | CC: 1.0000 PASS
+
+=========================================================================================
+ Ljung-Box Test for Serial Independence (i.i.d. check of Crash Magnitudes) (SILVER)
+=========================================================================================
+ Ljung-Box Test (Lag 10) p-value: 0.8636
+ Sonuc: PASS. Seri bagimsizdir. (i.i.d. varsayimi ampirik olarak dogrulanmistir)
+
+=========================================================================================
+ OUT-OF-SAMPLE (OOS) BACKTESTING -- IKI SPLIT STRATEJISI KARSILASTIRMASI
+=========================================================================================
+
+ --- OOS [Kronolojik (orijinal, son %30)] --- (train n=2764, test n=1185)
+/workspaces/GaL-Estimation/src/estimation.py:271: IntegrationWarning: The maximum number of subdivisions (2000) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+  integral_val, _ = integrate.quad(integrand, 1e-10, np.inf, limit=2000)
+/workspaces/GaL-Estimation/src/estimation.py:271: IntegrationWarning: The maximum number of subdivisions (2000) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+  integral_val, _ = integrate.quad(integrand, 1e-10, np.inf, limit=2000)
+  [Train] Alpha=0.9607, Theta=-0.2050, p=0.5078  (n_crash_train=138)
+  [Test]  N_crash=68
+  OOS VaR 0.05 | Ihlal: 0/68 | UC: 1.0000 PASS | CC: 1.0000 PASS
+  OOS VaR 0.01 | Ihlal: 0/68 | UC: 1.0000 PASS | CC: 1.0000 PASS
+
+ [Stratified split] test bloklari (0-9 arasi): [np.int64(0), np.int64(4), np.int64(9)]
+
+ --- OOS [Stratified (10 blok, dagitilmis)] --- (train n=2765, test n=1184)
+  [Train] Alpha=1.0200, Theta=-0.4002, p=0.4649  (n_crash_train=138)
+  [Test]  N_crash=68
+  OOS VaR 0.05 | Ihlal: 1/68 | UC: 0.1182 PASS | CC: 0.2907 PASS
+  OOS VaR 0.01 | Ihlal: 0/68 | UC: 1.0000 PASS | CC: 1.0000 PASS

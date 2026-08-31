@@ -103,7 +103,39 @@ def check_boundary_proximity(alpha, theta, p, label="", check_p=True):
 
     return theta_ratio, p_dist_to_bound
 
-def estimate_al_parameters(data, deg=50):
+def _polish_with_nelder_mead(objective, x0, verbose=False, label=""):
+    """
+    Local refinement step appended after DIRECT global optimization.
+
+    Motivation (AE comment #2 / methodology_diagnostics.multistart_local_vs_global):
+    a multi-start comparison on the paper's own crash-aggregate data showed that,
+    in the small-crash-sample regime (e.g. daily BTC, n_crash=36; Gold/Silver,
+    n_crash~200), the ECF minimum-distance objective is non-convex enough that
+    DIRECT's default budget (maxfun=2000) can leave a small amount of residual
+    room for improvement. Polishing the DIRECT solution with a local search
+    started AT that solution can only find an equal or better point (never
+    worse: the polished result is discarded unless it strictly improves the
+    objective), so this step is a strict quality improvement, not a change in
+    methodology.
+    """
+    res = optimize.minimize(
+        objective, x0=x0, method="Nelder-Mead",
+        options=dict(xatol=1e-8, fatol=1e-12, maxiter=5000, maxfev=5000),
+    )
+    f0 = objective(x0)
+    if res.success and res.fun < f0:
+        if verbose:
+            gap = f0 - res.fun
+            print(f"  [polish{f' {label}' if label else ''}] DIRECT obj={f0:.6e} -> "
+                  f"polished obj={res.fun:.6e} (improved by {gap:.3e})")
+        return res.x
+    if verbose:
+        print(f"  [polish{f' {label}' if label else ''}] no improvement over DIRECT "
+              f"(obj={f0:.6e}); keeping DIRECT solution")
+    return x0
+
+
+def estimate_al_parameters(data, deg=50, polish=True, verbose=False):
     t_nodes, weights = hermgauss(deg)
     t_data = np.outer(t_nodes, data)
     ecf_c = np.mean(np.cos(t_data), axis=1)
@@ -128,6 +160,15 @@ def estimate_al_parameters(data, deg=50):
     result = direct(objective, bounds=bounds, maxfun=2000)
     opt_params = result.x
 
+    if polish:
+        opt_params = _polish_with_nelder_mead(objective, opt_params, verbose=verbose, label="AL")
+        # re-clip to bounds defensively (Nelder-Mead is unconstrained; the
+        # objective already penalizes out-of-bounds points with 1e10, so a
+        # successful polish should not leave the admissible region, but we
+        # clip anyway to guard against floating-point edge cases at the
+        # boundary itself)
+        opt_params = np.clip(opt_params, bounds.lb, bounds.ub)
+
     try:
         se = compute_sandwich_se(t_nodes, weights, (opt_params[0], opt_params[1]),
                                   n_obs, fixed_p=1.0)
@@ -136,7 +177,7 @@ def estimate_al_parameters(data, deg=50):
 
     return opt_params[0], opt_params[1], se[0], se[1]
 
-def estimate_gal_parameters(data, deg=50):
+def estimate_gal_parameters(data, deg=50, polish=True, verbose=False):
     t_nodes, weights = hermgauss(deg)
     t_data = np.outer(t_nodes, data)
     ecf_c = np.mean(np.cos(t_data), axis=1)
@@ -162,6 +203,10 @@ def estimate_gal_parameters(data, deg=50):
     bounds = Bounds([0.01, -np.pi, 0.01], [2.0, np.pi, 1.0])
     result = direct(objective, bounds=bounds, maxfun=2000)
     opt_params = result.x
+
+    if polish:
+        opt_params = _polish_with_nelder_mead(objective, opt_params, verbose=verbose, label="GaL")
+        opt_params = np.clip(opt_params, bounds.lb, bounds.ub)
 
     try:
         se = compute_sandwich_se(t_nodes, weights,

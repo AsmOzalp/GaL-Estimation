@@ -1,0 +1,127 @@
+
+
+>>> 1d icin std_residuals hazirlaniyor (GARCH filtreleme)...
+
+[BTCUSDT] Local cache file read successfully ('data/BTCUSDT_1d_1y_data_with_trades.csv').
+    n_obs=364, hazirlik suresi=0.1s
+
+===========================================================================================
+ BAGIMLILIK TANI RAPORU (N vs X) [1d]
+ AE Yorum #3: N-X bagimsizlik varsayimi ve hacmin geometrik dagilima uygunlugu
+===========================================================================================
+
+-- 1) Hacim vs |sok| korelasyonu (lag -3..+3) --
+ lag   n  pearson_r  pearson_p  spearman_r  spearman_p
+  -3 359     0.0551     0.2980     -0.0052      0.9213
+  -2 359     0.0830     0.1164      0.0464      0.3802
+  -1 359     0.3758     0.0000      0.3509      0.0000
+   0 359     0.5101     0.0000      0.4361      0.0000
+   1 358     0.1731     0.0010      0.1003      0.0579
+   2 357     0.0882     0.0960      0.0362      0.4959
+   3 356     0.0298     0.5758     -0.0114      0.8306
+
+-- 2) Cevrim (cycle) duzeyinde N vs sok buyuklugu (esik goreli hacim=1.6591, n_cycles=36) --
+   n_cycles: 36
+   rho_N_vs_mean_abs_shock: -0.4917
+   p_N_vs_mean_abs_shock: 0.0023
+   rho_N_vs_max_abs_shock: 0.3415
+   p_N_vs_max_abs_shock: 0.0415
+
+-- 3) N_k icin Geometrik dagilim uyum testi (chi-square GOF) --
+   n: 36
+   mean_N: 8.7500
+   p_hat: 0.1143
+   k_bins: 5
+   dof: 3
+   chi2_stat: 17.1240
+   p_value: 0.0007
+
+-- 4) Dairesel-kaydirma (circular-shift) surrogate duyarlilik testi (n_perm=200) --
+   (Gercek [dogal hizalanmis] GaL tahminleri, hacim serisinin rastgele dairesel kaydirilmasiyla uretilen surrogate tahmin dagilimiyla karsilastiriliyor.)
+  [circular-shift] 20/200 tamamlandi...
+  [circular-shift] 40/200 tamamlandi...
+  [circular-shift] 60/200 tamamlandi...
+  [circular-shift] 80/200 tamamlandi...
+  [circular-shift] 100/200 tamamlandi...
+  [circular-shift] 120/200 tamamlandi...
+  [circular-shift] 140/200 tamamlandi...
+  [circular-shift] 160/200 tamamlandi...
+  [circular-shift] 180/200 tamamlandi...
+  [circular-shift] 200/200 tamamlandi...
+   n_crash_real: 36
+   n_valid_perm: 200
+   n_perm_requested: 200
+   alpha_real: 1.6132
+   alpha_perm_mean: 1.5129
+   alpha_perm_sd: 0.2448
+   alpha_perm_pvalue: 0.7800
+   theta_real: -0.6076
+   theta_perm_mean: 0.0006
+   theta_perm_sd: 0.2822
+   theta_perm_pvalue: 0.0350
+   p_real: 0.2283
+   p_perm_mean: 0.6554
+   p_perm_sd: 0.2157
+   p_perm_pvalue: 0.0100
+
+[1d] toplam sure: 12.1s
+
+
+>>> 5m icin std_residuals hazirlaniyor (GARCH filtreleme)...
+
+[BTCUSDT] Local cache file read successfully ('data/BTCUSDT_5m_1y_data_with_trades.csv').
+ *** UYARI: Hicbir model 'asiri-smooth degil' kriterini tam saglamadi. Standart GARCH(1,1) sonucu kullaniliyor -- lutfen diagnose_garch_fit ciktisini dikkatle inceleyin ve sonuclari supheyle degerlendirin. ***
+    n_obs=105119, hazirlik suresi=24.0s
+
+===========================================================================================
+ BAGIMLILIK TANI RAPORU (N vs X) [5m]
+ AE Yorum #3: N-X bagimsizlik varsayimi ve hacmin geometrik dagilima uygunlugu
+===========================================================================================
+
+-- 1) Hacim vs |sok| korelasyonu (lag -3..+3) --
+ lag      n  pearson_r  pearson_p  spearman_r  spearman_p
+  -3 104717     0.1528     0.0000      0.1137      0.0000
+  -2 104717     0.1688     0.0000      0.1168      0.0000
+  -1 104717     0.2370     0.0000      0.1581      0.0000
+   0 104717     0.2948     0.0000      0.2430      0.0000
+   1 104716     0.0620     0.0000      0.0681      0.0000
+   2 104715     0.0351     0.0000      0.0476      0.0000
+   3 104714     0.0291     0.0000      0.0520      0.0000
+
+-- 2) Cevrim (cycle) duzeyinde N vs sok buyuklugu (esik goreli hacim=3.7969, n_cycles=2095) --
+   n_cycles: 2095
+   rho_N_vs_mean_abs_shock: -0.0172
+   p_N_vs_mean_abs_shock: 0.4323
+   rho_N_vs_max_abs_shock: 0.7284
+   p_N_vs_max_abs_shock: 0.0000
+
+-- 3) N_k icin Geometrik dagilim uyum testi (chi-square GOF) --
+   n: 2095
+   mean_N: 50.1289
+   p_hat: 0.0199
+   k_bins: 145
+   dof: 143
+   chi2_stat: 32284.3158
+   p_value: 0.0000
+
+-- 4) Dairesel-kaydirma (circular-shift) surrogate duyarlilik testi (n_perm=50) --
+   (Gercek [dogal hizalanmis] GaL tahminleri, hacim serisinin rastgele dairesel kaydirilmasiyla uretilen surrogate tahmin dagilimiyla karsilastiriliyor.)
+  [circular-shift] 20/50 tamamlandi...
+  [circular-shift] 40/50 tamamlandi...
+   n_crash_real: 2095
+   n_valid_perm: 50
+   n_perm_requested: 50
+   alpha_real: 1.2782
+   alpha_perm_mean: 1.1157
+   alpha_perm_sd: 0.0338
+   alpha_perm_pvalue: 0.0000
+   theta_real: -0.1430
+   theta_perm_mean: -0.0082
+   theta_perm_sd: 0.0400
+   theta_perm_pvalue: 0.0000
+   p_real: 0.3559
+   p_perm_mean: 0.7201
+   p_perm_sd: 0.0437
+   p_perm_pvalue: 0.0000
+
+[5m] toplam sure: 39.2s

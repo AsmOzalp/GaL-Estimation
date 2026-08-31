@@ -1,0 +1,79 @@
+/workspaces/GaL-Estimation/src/estimation.py:271: IntegrationWarning: The maximum number of subdivisions (2000) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+  integral_val, _ = integrate.quad(integrand, 1e-10, np.inf, limit=2000)
+/workspaces/GaL-Estimation/src/estimation.py:271: IntegrationWarning: The maximum number of subdivisions (2000) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+  integral_val, _ = integrate.quad(integrand, 1e-10, np.inf, limit=2000)
+
+
+>>> 1d icin cokus (crash) toplamlari hazirlaniyor...
+
+[BTCUSDT] Local cache file read successfully ('data/BTCUSDT_1d_1y_data_with_trades.csv').
+    n_crash=36, hazirlik suresi=0.1s
+
+========================================================================================
+ NESTED MODEL COMPARISON: AL (p=1, restricted) vs GaL (p free) [1d]
+========================================================================================
+ n_crash = 36
+ AL  : alpha=0.7126 (se=0.2517), theta=-0.4816 (se=0.2257)
+ GaL : alpha=1.6132 (se=0.3611), theta=-0.6076 (se=0.3342), p=0.2283 (se=0.1214)
+
+ level=5% | expected=1.80
+   AL  (p=1): q= -18.735 | violations=   0 | Kupiec p=1.0000 | Christoffersen p=1.0000
+   GaL       : q=  -6.290 | violations=   0 | Kupiec p=1.0000 | Christoffersen p=1.0000
+
+ level=1% | expected=0.36
+   AL  (p=1): q=-420.550 | violations=   0 | Kupiec p=1.0000 | Christoffersen p=1.0000
+   GaL       : q= -10.312 | violations=   0 | Kupiec p=1.0000 | Christoffersen p=1.0000
+
+========================================================================================
+ MULTI-START LOCAL vs GLOBAL OPTIMIZATION [1d]
+========================================================================================
+ n_crash=36, n_starts=30
+ DIRECT (global) optimum: alpha=1.5578, theta=-0.6938, p=0.2393, obj=1.275700e-02  (time=0.04s)
+ Local starts landing within 0.05 (Euclidean) of global optimum: 0.0%  (0/30)
+ Objective gap (local - global): mean=1.6830e-03, median=-6.0283e-04, max=2.1991e-02
+ Distinct local optima found (rounded to 2 dp): 7 / 30
+
+[1d] toplam sure: 18.0s
+
+
+>>> 5m icin cokus (crash) toplamlari hazirlaniyor...
+
+[BTCUSDT] Local cache file read successfully ('data/BTCUSDT_5m_1y_data_with_trades.csv').
+ *** UYARI: Hicbir model 'asiri-smooth degil' kriterini tam saglamadi. Standart GARCH(1,1) sonucu kullaniliyor -- lutfen diagnose_garch_fit ciktisini dikkatle inceleyin ve sonuclari supheyle degerlendirin. ***
+    n_crash=2095, hazirlik suresi=22.4s
+
+========================================================================================
+ NESTED MODEL COMPARISON: AL (p=1, restricted) vs GaL (p free) [5m]
+========================================================================================
+ n_crash = 2095
+ AL  : alpha=0.5677 (se=0.0345), theta=-0.1231 (se=0.0297)
+ GaL : alpha=1.2782 (se=0.0408), theta=-0.1430 (se=0.0432), p=0.3559 (se=0.0224)
+
+ level=5% | expected=104.75
+   AL  (p=1): q= -37.227 | violations=  10 | Kupiec p=0.0000 | Christoffersen p=0.0000
+   GaL       : q=  -8.713 | violations= 121 | Kupiec p=0.1115 | Christoffersen p=0.1426
+
+ level=1% | expected=20.95
+   AL  (p=1): q=-651.599 | violations=   0 | Kupiec p=1.0000 | Christoffersen p=1.0000
+   GaL       : q= -28.332 | violations=  15 | Kupiec p=0.1687 | Christoffersen p=0.3506
+
+========================================================================================
+ MULTI-START LOCAL vs GLOBAL OPTIMIZATION [5m]
+========================================================================================
+ n_crash=2095, n_starts=30
+ DIRECT (global) optimum: alpha=1.2780, theta=-0.1427, p=0.3559, obj=1.629803e-03  (time=0.04s)
+ Local starts landing within 0.05 (Euclidean) of global optimum: 100.0%  (30/30)
+ Objective gap (local - global): mean=-9.7245e-09, median=-9.7245e-09, max=-9.7245e-09
+ Distinct local optima found (rounded to 2 dp): 1 / 30
+
+[5m] toplam sure: 41.8s

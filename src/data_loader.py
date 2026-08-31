@@ -15,26 +15,42 @@ import time
 import requests
 from pathlib import Path
 
-def load_commodity_data(symbol="GC=F", start_date="2010-01-01"):
-    """Downloads historical asset records from Yahoo Finance and processes log returns."""
-    print(f"\n[{symbol}] Downloading target dataset from Yahoo Finance starting from {start_date}...")
-    df = yf.download(symbol, start=start_date, progress=False)
-    
+def load_commodity_data(symbol="GC=F", start_date="2010-01-01", end_date=None):
+    """
+    Downloads historical asset records from Yahoo Finance and processes log returns.
+
+    end_date=None (default) pulls through the most recent available trading day,
+    so the exact sample window depends on WHEN this function is run. For a
+    manuscript/reproducibility snapshot, pass an explicit end_date (e.g.
+    "2026-08-31") so re-running the pipeline later reproduces the same window
+    reported in the paper, rather than silently extending it.
+    """
+    print(f"\n[{symbol}] Downloading target dataset from Yahoo Finance "
+          f"starting from {start_date}" + (f" through {end_date}" if end_date else " through today") + "...")
+    df = yf.download(symbol, start=start_date, end=end_date, progress=False)
+
     if isinstance(df.columns, pd.MultiIndex):
         close_col = df['Close'][symbol]
         vol_col = df['Volume'][symbol]
     else:
         close_col = df['Close']
         vol_col = df['Volume']
-        
+
     data = pd.DataFrame({'Close': close_col, 'Volume': vol_col})
     original_len = len(data)
     data = data[data['Volume'] > 0].dropna()
     cleaned_len = len(data)
     print(f" -> Holidays and zero-volume periods removed: {original_len - cleaned_len} rows excluded.")
-    
+
     data['log_return'] = np.log(data['Close'] / data['Close'].shift(1)) * 100
-    data = data.dropna().reset_index(drop=True)
+    data = data.dropna()
+    if len(data) > 0:
+        date_start, date_end = data.index[0], data.index[-1]
+        print(f" -> [Reproducibility] Actual sample window used: "
+              f"{date_start.date()} .. {date_end.date()}  (n={len(data)} observations) "
+              f"-- report this exact window in the manuscript's data section")
+    data = data.reset_index(drop=True)
+
     return data['log_return'].to_numpy(), data['Volume'].to_numpy()
 
 
