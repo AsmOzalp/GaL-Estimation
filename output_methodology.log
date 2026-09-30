@@ -43,14 +43,14 @@
  Objective gap (local - global): mean=1.6830e-03, median=-6.0283e-04, max=2.1991e-02
  Distinct local optima found (rounded to 2 dp): 7 / 30
 
-[1d] toplam sure: 18.0s
+[1d] toplam sure: 18.6s
 
 
 >>> 5m icin cokus (crash) toplamlari hazirlaniyor...
 
 [BTCUSDT] Local cache file read successfully ('data/BTCUSDT_5m_1y_data_with_trades.csv').
  *** UYARI: Hicbir model 'asiri-smooth degil' kriterini tam saglamadi. Standart GARCH(1,1) sonucu kullaniliyor -- lutfen diagnose_garch_fit ciktisini dikkatle inceleyin ve sonuclari supheyle degerlendirin. ***
-    n_crash=2095, hazirlik suresi=22.4s
+    n_crash=2095, hazirlik suresi=23.8s
 
 ========================================================================================
  NESTED MODEL COMPARISON: AL (p=1, restricted) vs GaL (p free) [5m]
@@ -76,4 +76,4 @@
  Objective gap (local - global): mean=-9.7245e-09, median=-9.7245e-09, max=-9.7245e-09
  Distinct local optima found (rounded to 2 dp): 1 / 30
 
-[5m] toplam sure: 41.8s
+[5m] toplam sure: 44.3s

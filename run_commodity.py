@@ -24,7 +24,9 @@ from src.estimation import (
 )
 from src.risk_metrics_vcomm import construct_volume_triggered_returns_v2
 from src.backtest import test_iid_assumption, out_of_sample_backtest_v2, backtest_var
-
+# Reproducibility: fixed data cutoff for the manuscript
+DATA_START_DATE = "2010-01-01"
+DATA_END_DATE = "2026-08-31"
 def run_sensitivity_analysis(std_residuals, volume, symbol, window=30):
     """
     Belirli hacim eşiklerinde (85, 90, 95, 98) GaL parametrelerinin değişimini 
@@ -51,7 +53,11 @@ def run_commodity_risk_application(symbol="GC=F", name="GOLD"):
     """
     Emtia için ana risk analizi ve backtesting boru hattı.
     """
-    returns, volume = load_commodity_data(symbol=symbol, start_date="2010-01-01")
+    returns, volume = load_commodity_data(
+    symbol=symbol,
+    start_date=DATA_START_DATE,
+    end_date=DATA_END_DATE
+    )
     n_obs = len(returns)
 
     print(f"\nRunning Robust GARCH(1,1) model for {name} (Daily)...")

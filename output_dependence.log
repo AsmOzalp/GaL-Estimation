@@ -3,7 +3,7 @@
 >>> 1d icin std_residuals hazirlaniyor (GARCH filtreleme)...
 
 [BTCUSDT] Local cache file read successfully ('data/BTCUSDT_1d_1y_data_with_trades.csv').
-    n_obs=364, hazirlik suresi=0.1s
+    n_obs=364, hazirlik suresi=0.2s
 
 ===========================================================================================
  BAGIMLILIK TANI RAPORU (N vs X) [1d]
@@ -64,14 +64,14 @@
    p_perm_sd: 0.2157
    p_perm_pvalue: 0.0100
 
-[1d] toplam sure: 12.1s
+[1d] toplam sure: 12.3s
 
 
 >>> 5m icin std_residuals hazirlaniyor (GARCH filtreleme)...
 
 [BTCUSDT] Local cache file read successfully ('data/BTCUSDT_5m_1y_data_with_trades.csv').
  *** UYARI: Hicbir model 'asiri-smooth degil' kriterini tam saglamadi. Standart GARCH(1,1) sonucu kullaniliyor -- lutfen diagnose_garch_fit ciktisini dikkatle inceleyin ve sonuclari supheyle degerlendirin. ***
-    n_obs=105119, hazirlik suresi=24.0s
+    n_obs=105119, hazirlik suresi=24.1s
 
 ===========================================================================================
  BAGIMLILIK TANI RAPORU (N vs X) [5m]
@@ -124,4 +124,4 @@
    p_perm_sd: 0.0437
    p_perm_pvalue: 0.0000
 
-[5m] toplam sure: 39.2s
+[5m] toplam sure: 39.5s
